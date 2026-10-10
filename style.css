@@ -1,0 +1,224 @@
+/* ========== 1. 全站色彩與字體（改這裡就能換整站風格） ========== */
+:root {
+	--color-primary: #8bb33a;      /* 主色：柚子葉綠 */
+	--color-primary-dark: #5f8a1f;
+	--color-accent: #f2c94c;       /* 強調色：柚子黃 */
+	--color-bg: #fffdf5;           /* 背景 */
+	--color-bg-alt: #f6f3e4;       /* 區塊交錯背景 */
+	--color-text: #333;
+	--color-muted: #777;
+	--radius: 12px;
+	--max-width: 1100px;
+	--font: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+	font-family: var(--font);
+	color: var(--color-text);
+	background: var(--color-bg);
+	line-height: 1.7;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+.container {
+	max-width: var(--max-width);
+	margin: 0 auto;
+	padding: 0 16px;
+}
+section { padding: 72px 0; }
+section:nth-of-type(even) { background: var(--color-bg-alt); }
+.section-title {
+	text-align: center;
+	font-size: 2rem;
+	margin-bottom: 12px;
+}
+.section-subtitle {
+	text-align: center;
+	color: var(--color-muted);
+	margin-bottom: 40px;
+}
+
+.btn {
+	display: inline-block;
+	padding: 12px 28px;
+	border-radius: 999px;
+	background: var(--color-primary);
+	color: #fff;
+	font-weight: bold;
+	transition: background .2s;
+}
+.btn:hover { background: var(--color-primary-dark); }
+.btn-outline {
+	background: transparent;
+	border: 2px solid var(--color-primary);
+	color: var(--color-primary-dark);
+}
+.btn-outline:hover { background: var(--color-primary); color: #fff; }
+
+/* 圖片佔位：之後換成 <img src="..."> 即可 */
+.img-placeholder {
+	background: linear-gradient(135deg, #fbe9a7, #d9ea9c);
+	border-radius: var(--radius);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 4rem;
+	aspect-ratio: 4 / 3;
+}
+
+/* ========== 2. 導覽列 ========== */
+.site-header {
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	background: rgba(255, 253, 245, .95);
+	border-bottom: 1px solid #eee;
+}
+.nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 64px;
+}
+.logo { font-size: 1.4rem; font-weight: bold; color: var(--color-primary-dark); }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a:hover,
+.nav-links a.active { color: var(--color-primary); }
+.nav-links a.active { font-weight: bold; }
+.nav-toggle {
+	display: none;
+	background: none;
+	border: none;
+	font-size: 1.6rem;
+	cursor: pointer;
+}
+
+/* ========== 3. 主視覺 Hero（主頁） ========== */
+.hero {
+	padding: 96px 0;
+	background: linear-gradient(180deg, #fff8d6, var(--color-bg));
+}
+.hero-inner {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 48px;
+	align-items: center;
+}
+.hero h1 { font-size: 2.6rem; line-height: 1.3; margin-bottom: 16px; }
+.hero p { color: var(--color-muted); margin-bottom: 28px; font-size: 1.1rem; }
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* 子頁面頂部橫幅（關於我們、顧客評價） */
+.page-banner {
+	padding: 64px 0;
+	text-align: center;
+	background: linear-gradient(180deg, #fff8d6, var(--color-bg));
+}
+.page-banner h1 { font-size: 2.4rem; margin-bottom: 8px; }
+.page-banner p { color: var(--color-muted); }
+
+/* ========== 4. 特色 ========== */
+.features {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 24px;
+}
+.feature {
+	text-align: center;
+	padding: 28px 20px;
+	background: #fff;
+	border-radius: var(--radius);
+	box-shadow: 0 2px 10px rgba(0,0,0,.05);
+}
+.feature-icon { font-size: 2.5rem; margin-bottom: 12px; }
+.feature h3 { margin-bottom: 8px; }
+.feature p { color: var(--color-muted); font-size: .95rem; }
+
+/* ========== 5. 商品 ========== */
+.products {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	gap: 24px;
+}
+.product {
+	background: #fff;
+	border-radius: var(--radius);
+	overflow: hidden;
+	box-shadow: 0 2px 10px rgba(0,0,0,.06);
+	display: flex;
+	flex-direction: column;
+}
+.product .img-placeholder { border-radius: 0; }
+.product-body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+.product-body h3 { margin-bottom: 6px; }
+.product-body p { color: var(--color-muted); font-size: .95rem; flex: 1; }
+.product-price {
+	font-size: 1.3rem;
+	font-weight: bold;
+	color: var(--color-primary-dark);
+	margin: 12px 0;
+}
+.product-price small { font-size: .85rem; color: var(--color-muted); font-weight: normal; }
+
+/* ========== 6. 關於我們 ========== */
+.about-inner {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 48px;
+	align-items: center;
+}
+.about-inner h2 { font-size: 1.6rem; margin-bottom: 16px; }
+.about-inner p { margin-bottom: 16px; }
+
+/* ========== 7. 顧客評價 ========== */
+.reviews {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	gap: 24px;
+}
+.review {
+	background: #fff;
+	padding: 24px;
+	border-radius: var(--radius);
+	border-left: 4px solid var(--color-accent);
+}
+.review-name { margin-top: 12px; color: var(--color-muted); font-size: .9rem; }
+
+/* ========== 8. 聯絡 / 訂購（每頁底部固定出現） ========== */
+.contact { text-align: center; }
+.contact-info { margin: 24px 0; line-height: 2; }
+
+/* ========== 9. 頁尾 ========== */
+.site-footer {
+	background: #3d4a22;
+	color: #dfe6cc;
+	padding: 32px 0;
+	text-align: center;
+	font-size: .9rem;
+}
+
+/* ========== 手機版 ========== */
+@media (max-width: 768px) {
+	.nav-toggle { display: block; }
+	.nav-links {
+		display: none;
+		position: absolute;
+		top: 64px;
+		left: 0;
+		right: 0;
+		flex-direction: column;
+		gap: 0;
+		background: var(--color-bg);
+		border-bottom: 1px solid #eee;
+	}
+	.nav-links.open { display: flex; }
+	.nav-links a { display: block; padding: 14px 16px; }
+	.hero { padding: 56px 0; }
+	.hero-inner, .about-inner { grid-template-columns: 1fr; }
+	.hero h1 { font-size: 2rem; }
+	.page-banner { padding: 48px 0; }
+	.page-banner h1 { font-size: 2rem; }
+	section { padding: 56px 0; }
+}
